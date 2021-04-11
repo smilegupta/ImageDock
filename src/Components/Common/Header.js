@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
 const Header = () => {
-  // State Variables   
+  // State Variables
   const [theme, setTheme] = useState("light");
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">Image Dock</Navbar.Brand>
+          <Link to="/">
+            <Navbar.Brand>Image Dock</Navbar.Brand>
+          </Link>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
@@ -28,7 +32,10 @@ const Header = () => {
                   ></i>
                 )}{" "}
               </Nav.Link>
-              <Nav.Link href="/login">Sign In</Nav.Link>
+              <Link to="/login">
+                {" "}
+                <Nav.Link>Sign In</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,6 +1,7 @@
 import React from "react";
 import { collectionList } from "../../../config/dummydata";
 import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const HomeScreen = () => {
   return (
@@ -9,7 +10,7 @@ const HomeScreen = () => {
         <>
           {" "}
           <Col sm={12} lg={4} xl={3} md={6}>
-            <a href={`/collection/${item.collectionId}`}>
+            <Link to={`/collection/${item.collectionId}`}>
               <div
                 class="card rounded text-white bg-dark mb-3"
                 style={{ maxWidth: "20rem" }}
@@ -19,7 +20,7 @@ const HomeScreen = () => {
                   <h4 class="card-title">{item.name}</h4>
                 </div>
               </div>
-            </a>
+            </Link>
           </Col>
         </>
       ))}
