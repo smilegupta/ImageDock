@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { collectionList } from "../../../config/dummydata";
 
 const Collection = ({ match }) => {
@@ -11,7 +11,7 @@ const Collection = ({ match }) => {
   return (
     <div>
       <Row className="mb-3">
-        <Col>
+        <Col className="text-right">
           <Link to="/">
             <i class="las la-arrow-left" /> Go Back
           </Link>
