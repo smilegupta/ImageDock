@@ -59,14 +59,22 @@ export const c2Data = [
 export const collectionList = [
   {
     name: "default",
+    collectionId: "1b6bc1cc-0ede-46b2-a77c-e330655e9544",
     collection: defaultData,
   },
   {
     name: "c1",
+    collectionId: "8c721827-3b5a-4069-ad99-5fc551c5a87e",
     collection: c1Data,
   },
   {
     name: "c2",
+    collectionId: "3d2a8949-1a1c-4399-ad8f-bae4d9e6e400",
+    collection: c2Data,
+  },
+  {
+    name: "c3",
+    collectionId: "3d2a8949-1a1c-4399-ad8f-bae4d9e6e400",
     collection: c2Data,
   },
 ];
