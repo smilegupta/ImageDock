@@ -1,0 +1,10 @@
+name: image-dock
+
+image-dock:
+  component: "@serverless/website"
+  region: ${env.REGION}
+  inputs:
+    code:
+      src: ./build
+    bucketName: ${env.BUCKET_NAME}
+      
