@@ -1,7 +1,58 @@
+/************ General CSS ****************/
+
 main {
   min-height: 80vh;
 }
 
 a {
   text-decoration: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/************ MODAL WINDOW STYLES ****************/
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(5px);
+}
+
+.ReactModal__Overlay--after-open {
+  z-index: 100 !important;
+}
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
+
+.react-modal {
+  width: 40%;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  overflow: auto;
+  max-height: calc(100% - 75px);
+}
+
+/* XS screens */
+@media only screen and (max-width: 480px) {
+  .react-modal {
+    width: 80% !important;
+  }
+}
+
+/* SM screens */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .react-modal {
+    width: 80% !important;
+  }
+}
+
+.react-modal:focus {
+  border: none;
+  outline: none;
 }
