@@ -7,4 +7,5 @@ image-dock:
     code:
       src: ./build
     bucketName: ${env.BUCKET_NAME}
+    domain: image-dock.smilegupta.tech
       
