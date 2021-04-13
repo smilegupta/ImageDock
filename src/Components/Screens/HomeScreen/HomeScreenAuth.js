@@ -4,7 +4,7 @@ import { Row, Col, Button, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NoImage from '../../../infographic.svg'
 
-const HomeScreen = () => {
+const HomeScreenAuth = () => {
   return (
     <>
       <Row>
@@ -19,7 +19,7 @@ const HomeScreen = () => {
               <Col sm={12} lg={4} xl={3} md={6} key={idx}>
                 <Link to={`/collection/${item.collectionId}`}>
                   <div
-                    className="card rounded text-white bg-dark mb-3 image"
+                    className="card rounded text-white bg-dark mb-3"
                     style={{ maxWidth: "20rem" }}
                   >
                     <div className="card-body text-center">
@@ -52,4 +52,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default HomeScreenAuth;

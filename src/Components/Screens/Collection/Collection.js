@@ -39,7 +39,7 @@ const Collection = ({ match }) => {
             key={idx}
             className="d-flex justify-content-center"
           >
-            <Image src={item.imageUrl} alt={item.name} height={200} />
+            <Image className="image cursor-pointer" src={item.imageUrl} alt={item.name} height={200} style={{ border: "5px solid #000000" }} />
           </Col>
         ))}
       </Row>
