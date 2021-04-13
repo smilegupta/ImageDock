@@ -31,7 +31,7 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
     >
       <div className="modal-dialog">
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header" style={{ padding: "2rem" }}>
             <h5 className="modal-title">Collection Settings</h5>
             <button
               type="button"
@@ -41,7 +41,7 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
               <span> &times; </span>
             </button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body" style={{ padding: "2rem" }}>
             <form>
               <div className="form-group">
                 <label htmlFor="collectionName">Collection Name*</label>
@@ -65,7 +65,7 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
                 <textarea
                   className="form-control"
                   id="description"
-                  rows="3"
+                  rows="5"
                   value={collectionDesc}
                   placeholder="For Eg: Glipmse of the Goa Trip I went with Srushith Shaina and Prachitesh"
                   onChange={(e) => {
@@ -75,20 +75,13 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
               </div>
             </form>
           </div>
-          <div className="modal-footer">
+          <div className="modal-footer" style={{ padding: "2rem" }}>
             <button
               type="button"
               onClick={(e) => handleSubmit(e)}
               className="btn btn-primary"
             >
               Save changes
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => setSettingsOpen(false)}
-            >
-              Close
             </button>
           </div>
         </div>

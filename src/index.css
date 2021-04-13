@@ -1,7 +1,7 @@
 /************ General CSS ****************/
 
 main > .container {
-  min-height: 80vh;
+  min-height: 70vh;
 }
 
 a {
@@ -11,6 +11,11 @@ a {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.image:hover {
+	transform: scale(1.02)
+}
+
 
 /************ MODAL WINDOW STYLES ****************/
 
