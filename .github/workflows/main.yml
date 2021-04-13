@@ -32,5 +32,5 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: serverless --verbose
         env: 
-          BUCKET_NAME: image-doc-dev
+          BUCKET_NAME: image-dock-dev
           REGION: ap-southeast-1
