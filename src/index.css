@@ -1,6 +1,6 @@
 /************ General CSS ****************/
 
-main {
+main > .container {
   min-height: 80vh;
 }
 
