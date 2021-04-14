@@ -1,10 +1,13 @@
-import React from "react";
+import {useState} from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
 import { recentUploads } from "../../../config/dummydata";
-import LoginImage from "../../../Images/upload2.svg";
+import UploadImageModal from "../../Modals/UploadImage";
 
 const Upload = () => {
+ 
+  // State Variables
+  const [modalStatus, setModalStatus ] = useState(false);
   return (
     <div>
       <Row className="mb-3">
@@ -18,7 +21,7 @@ const Upload = () => {
         <Col className="text-lg-left text-center">
           <h4>
             {" "}
-            Recent Uploads <i className="las la-plus cursor-pointer" />{" "}
+            Recent Uploads <i className="las la-plus cursor-pointer" onClick={() => setModalStatus(true)} />{" "}
           </h4>
         </Col>
       </Row>
@@ -50,6 +53,7 @@ const Upload = () => {
           </h5>
         </Col>
       </Row>
+      <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} /> 
     </div>
   );
 };
