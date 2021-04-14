@@ -40,7 +40,7 @@ const Upload = () => {
               className="image cursor-pointer w-100"
               src={item}
               alt="Images"
-              style={{ border: "5px solid #000000" }}
+              style={{ border: "2px solid #000000" }}
             />
           </Col>
         ))}
