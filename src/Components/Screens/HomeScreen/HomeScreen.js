@@ -7,14 +7,14 @@ import NoImage from '../../../Images/infographic.svg'
 const HomeScreen = () => {
   return (
     <>
-      <Row style={{ minHeight: "70vh" }} >
+      <Row className="my-4">
         {collectionList.length > 0 ? (
           <>
-            <Col sm={12} lg={12} xl={12} md={12}>
-              <h4 className="my-auto">
+            <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
+              <h4>
                 My Memories <i className="las la-plus cursor-pointer" />
               </h4>
-            </Col>{" "}
+            </Col>
             {collectionList.map((item, idx) => (
               <Col sm={12} lg={4} xl={3} md={6} key={idx}>
                 <Link to={`/collection/${item.collectionId}`}>
