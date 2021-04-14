@@ -112,3 +112,24 @@ export const collectionList = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
 ];
+
+export const recentUploads = [
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_170.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white_153.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white_146.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white0354.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_brown488.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_black0818.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_brown1004.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_brown0985.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_brown1066.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0827.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0633.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white0598.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_150.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_brown_253.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_159.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0468.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_138.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white_108.png",
+];

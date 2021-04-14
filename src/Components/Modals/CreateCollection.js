@@ -2,10 +2,10 @@ import { useState } from "react";
 import Modal from "react-modal";
 Modal.setAppElement("*");
 
-const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
+const CreateCollection = ({ modalStatus, setModalStatus }) => {
   // State Variables
-  const [collectionName, setCollectionName] = useState(name);
-  const [collectionDesc, setCollectionDesc] = useState(desc);
+  const [collectionName, setCollectionName] = useState('');
+  const [collectionDesc, setCollectionDesc] = useState('');
   const [error, setError] = useState("");
 
   // Handle Submit Function
@@ -25,18 +25,18 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
 
   return (
     <Modal
-      isOpen={settingsOpen}
-      onRequestClose={() => setSettingsOpen(false)}
+      isOpen={modalStatus}
+      onRequestClose={() => setModalStatus(false)}
       className="react-modal"
     >
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header" style={{ padding: "2rem" }}>
-            <h5 className="modal-title">Collection Settings</h5>
+            <h5 className="modal-title">Create Collection</h5>
             <button
               type="button"
               className="close"
-              onClick={() => setSettingsOpen(false)}
+              onClick={() => setModalStatus(false)}
             >
               <span> &times; </span>
             </button>
@@ -81,7 +81,7 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
               onClick={(e) => handleSubmit(e)}
               className="btn btn-primary"
             >
-              Save changes
+              Create Collection
             </button>
           </div>
         </div>
@@ -90,4 +90,4 @@ const EditSettings = ({ settingsOpen, setSettingsOpen, name, desc }) => {
   );
 };
 
-export default EditSettings;
+export default CreateCollection;

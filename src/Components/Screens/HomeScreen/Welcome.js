@@ -1,7 +1,8 @@
 import { Row, Col, Image, Button } from "react-bootstrap";
 import HomeScreenImage from "../../../Images/homescreen.svg";
+import { Link } from "react-router-dom";
 
-const HomeScreen2 = () => {
+const Welcome = () => {
   return (
     <Row style={{ minHeight: "70vh" }}>
       <Col className="text-center my-4">
@@ -21,11 +22,16 @@ const HomeScreen2 = () => {
         <h6 className="w-100 mt-2 text-muted">
           A place to edit image just like photoshop
         </h6>
-        <Button className="btn btn-dark  mt-3 ml-2 p-2">
-          {" "}
-          &nbsp; Upload Image{" "}
-          <i className="las la-cloud-upload-alt" style={{ fontSize: "18px" }} />
-        </Button>
+        <Link to="/upload">
+          <Button className="btn btn-dark  mt-3 ml-2 p-2">
+            {" "}
+            &nbsp; Upload Image{" "}
+            <i
+              className="las la-cloud-upload-alt"
+              style={{ fontSize: "18px" }}
+            />
+          </Button>
+        </Link>
         <Button className="btn btn-dark   mt-3 ml-2 p-2">
           {" "}
           &nbsp; Edit Image{" "}
@@ -41,4 +47,4 @@ const HomeScreen2 = () => {
   );
 };
 
-export default HomeScreen2;
+export default Welcome;
