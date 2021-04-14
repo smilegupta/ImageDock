@@ -1,5 +1,5 @@
 import { Row, Col, Image, Button } from "react-bootstrap";
-import HomeScreenImage from "../../../homescreen.svg";
+import HomeScreenImage from "../../../Images/homescreen.svg";
 
 const HomeScreen2 = () => {
   return (
