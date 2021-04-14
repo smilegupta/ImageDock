@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Button, Row, Col, Image } from "react-bootstrap";
+import { Form, Button, Row, Col , Image} from "react-bootstrap";
 import FormContainer from "./FormContainer";
-import LoginImage from "../../../Images/signIn.svg";
+import Register from "../../../Images/register.svg"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,12 +14,12 @@ const Login = () => {
   };
   return (
     <FormContainer>
-      <Row>
+        <Row>
         <Col className="text-center my-4">
-          <Image src={LoginImage} alt="empty" className="w-75" />
+          <Image src={Register} alt="empty" className="w-75" />
         </Col>
       </Row>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label> Email Address </Form.Label>
@@ -40,12 +40,12 @@ const Login = () => {
           ></Form.Control>
         </Form.Group>
         <Button type="submit" variant="dark">
-          Sign In
+          Register
         </Button>
       </Form>
       <Row className="py-3">
         <Col>
-          New User? <Link to={`/register`}> Register </Link>
+          Already Have Account? <Link to={`/login`}> Login </Link>
         </Col>
       </Row>
     </FormContainer>
