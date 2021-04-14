@@ -126,4 +126,10 @@ export const recentUploads = [
   "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0827.png",
   "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0633.png",
   "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white0598.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_150.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_brown_253.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_159.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white0468.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-female/Avatarz_white_138.png",
+  "https://reskill-assets.s3.ap-south-1.amazonaws.com/Avatars/Avatars-male/Avatarz_white_108.png",
 ];
