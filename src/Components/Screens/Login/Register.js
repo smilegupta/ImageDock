@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col , Image} from "react-bootstrap";
 import FormContainer from "./FormContainer";
 import Register from "../../../Images/register.svg"
+import { Auth } from "aws-amplify"
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,29 +22,53 @@ const Login = () => {
         </Col>
       </Row>
       <h1>Sign Up</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="email">
-          <Form.Label> Email Address </Form.Label>
-          <Form.Control
+      <form>
+      <div className="form-group">
+          <label htmlFor="collectionName">Name*</label>
+          <input
+            required
+            type="text"
+            className="form-control"
+            name="name"
+            id="name"
+            value={name}
+            placeholder="For Eg: rachelgreen@gmail.com"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="collectionName">Email*</label>
+          <input
+            required
             type="email"
-            placeholder="Enter Email"
+            className="form-control"
+            name="email"
+            id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="password">
-          <Form.Label> Password </Form.Label>
-          <Form.Control
+            placeholder="For Eg: rachelgreen@gmail.com"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="collectionName">Password*</label>
+          <input
+            required
             type="password"
-            placeholder="Enter Password"
+            className="form-control"
+            name="password"
+            id="passeord"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Button type="submit" variant="dark">
-          Register
-        </Button>
-      </Form>
+            placeholder="For Eg: ********"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </div>
+      </form>
       <Row className="py-3">
         <Col>
           Already Have Account? <Link to={`/login`}> Login </Link>

@@ -19,9 +19,6 @@ const Welcome = () => {
         <h6 className="w-100 mt-2 text-muted">
           A place to generate cover images for blogs
         </h6>
-        <h6 className="w-100 mt-2 text-muted">
-          A place to edit image just like photoshop
-        </h6>
         <Link to="/upload">
           <Button className="btn btn-dark  mt-3 ml-2 p-2">
             {" "}
@@ -32,16 +29,13 @@ const Welcome = () => {
             />
           </Button>
         </Link>
-        <Button className="btn btn-dark   mt-3 ml-2 p-2">
-          {" "}
-          &nbsp; Edit Image{" "}
-          <i className="las la-pen" style={{ fontSize: "18px" }} />
-        </Button>
-        <Button className="btn btn-dark mt-3 ml-2 p-2">
-          {" "}
+        <Link to="/generate-image">
+          <Button className="btn btn-dark mt-3 ml-2 p-2">
+            {" "}
           &nbsp; Generate Image{" "}
-          <i className="las la-plus" style={{ fontSize: "18px" }} />
-        </Button>{" "}
+            <i className="las la-plus" style={{ fontSize: "18px" }} />
+          </Button>
+        </Link>
       </Col>
     </Row>
   );

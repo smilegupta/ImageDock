@@ -8,6 +8,7 @@ import Collection from "./Components/Screens/Collection/Collection";
 import Login from "./Components/Screens/Login/Login";
 import Register from "./Components/Screens/Login/Register";
 import Upload from "./Components/Screens/Upload/Upload"
+import GenerateImage from "./Components/Screens/GenerateImage/GenerateImage"
 
 function App() {
   return (
@@ -15,12 +16,13 @@ function App() {
       <Header />
       <main className="py-3">
         <Container>
+        <Route path="/" component={Welcome} exact />
           <Route path="/home" component={HomeScreen} />
-          <Route path="/" component={Welcome} exact />
           <Route path="/collection/:id" component={Collection} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/upload" component={Upload} />
+          <Route path="/generate-image" component={GenerateImage} />
         </Container>
       </main>
       <Footer />

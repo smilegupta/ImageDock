@@ -40,7 +40,7 @@ const Upload = () => {
               className="image cursor-pointer w-100"
               src={item}
               alt="Images"
-              style={{ border: "5px solid #000000" }}
+              style={{ border: "2px solid #000000" }}
             />
           </Col>
         ))}
@@ -49,7 +49,7 @@ const Upload = () => {
         <Col className="text-center cursor-pointer">
           <h5>
             {" "}
-            Load More <i class="las la-chevron-circle-down" />{" "}
+            Load More <i className="las la-chevron-circle-down" />{" "}
           </h5>
         </Col>
       </Row>

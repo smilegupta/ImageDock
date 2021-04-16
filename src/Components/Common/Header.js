@@ -14,13 +14,16 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
             <LinkContainer to="/upload">
-                <Nav.Link className="pr-0">  <i class="las la-file-upload" style={{ fontSize: "16px" }} /> Upload </Nav.Link>
+                <Nav.Link>  Upload </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/generate-image">
+                <Nav.Link>  Generate </Nav.Link>
               </LinkContainer>
             <LinkContainer to="/home">
-                <Nav.Link className="pr-0"> <i class="las la-home" style={{ fontSize: "16px" }} /> Home </Nav.Link>
+                <Nav.Link>  Home </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
-                <Nav.Link className="pr-0 mx-1"> <i class="las la-walking" style={{ fontSize: "17px" }} /> Sign In</Nav.Link>
+                <Nav.Link className="pr-0"> Sign In</Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
