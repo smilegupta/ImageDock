@@ -16,9 +16,6 @@ const Header = () => {
             <LinkContainer to="/upload">
                 <Nav.Link>  Upload </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/edit-image">
-                <Nav.Link>  Edit </Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/generate-image">
                 <Nav.Link>  Generate </Nav.Link>
               </LinkContainer>

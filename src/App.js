@@ -8,7 +8,6 @@ import Collection from "./Components/Screens/Collection/Collection";
 import Login from "./Components/Screens/Login/Login";
 import Register from "./Components/Screens/Login/Register";
 import Upload from "./Components/Screens/Upload/Upload"
-import EditImage from "./Components/Screens/EditImage/EditImage"
 import GenerateImage from "./Components/Screens/GenerateImage/GenerateImage"
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/upload" component={Upload} />
-          <Route path="/edit-image" component={EditImage} />
           <Route path="/generate-image" component={GenerateImage} />
         </Container>
       </main>
