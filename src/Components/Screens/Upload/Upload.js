@@ -49,7 +49,7 @@ const Upload = () => {
         <Col className="text-center cursor-pointer">
           <h5>
             {" "}
-            Load More <i class="las la-chevron-circle-down" />{" "}
+            Load More <i className="las la-chevron-circle-down" />{" "}
           </h5>
         </Col>
       </Row>

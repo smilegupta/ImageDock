@@ -32,16 +32,20 @@ const Welcome = () => {
             />
           </Button>
         </Link>
-        <Button className="btn btn-dark   mt-3 ml-2 p-2">
-          {" "}
+        <Link to="/edit-image">
+          <Button className="btn btn-dark   mt-3 ml-2 p-2">
+            {" "}
           &nbsp; Edit Image{" "}
-          <i className="las la-pen" style={{ fontSize: "18px" }} />
-        </Button>
-        <Button className="btn btn-dark mt-3 ml-2 p-2">
-          {" "}
+            <i className="las la-pen" style={{ fontSize: "18px" }} />
+          </Button>
+        </Link>
+        <Link to="/generate-image">
+          <Button className="btn btn-dark mt-3 ml-2 p-2">
+            {" "}
           &nbsp; Generate Image{" "}
-          <i className="las la-plus" style={{ fontSize: "18px" }} />
-        </Button>{" "}
+            <i className="las la-plus" style={{ fontSize: "18px" }} />
+          </Button>
+        </Link>
       </Col>
     </Row>
   );
