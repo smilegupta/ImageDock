@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, Button, Row, Col , Image} from "react-bootstrap";
+import { Row, Col , Image} from "react-bootstrap";
 import FormContainer from "./FormContainer";
 import Register from "../../../Images/register.svg"
-import { Auth } from "aws-amplify"
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    //
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   //
+  // };
   return (
     <FormContainer>
         <Row>
