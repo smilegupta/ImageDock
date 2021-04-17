@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import { uploadLogo } from "../../CRUD/uploadImage.crud"
+import { uploadImage, imageStore, getRecentUploads } from "../../CRUD/uploadImage.crud"
 import { CopyToClipboard } from "react-copy-to-clipboard";
 toast.configure();
 Modal.setAppElement("*");
 
-const UploadImageModal = ({ modalStatus, setModalStatus }) => {
+const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   // State Variables
   const [file, setFile] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,10 +30,12 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
     e.preventDefault();
     setLoading(true)
     try {
-      const result = await uploadLogo(file);
-      console.log(result.data)
+      const result = await uploadImage(file);
       setS3URL(result.data)
+      imageStore(result.data)
       setEmbededLinkText(result.data)
+      const res = await getRecentUploads()
+      setApiResponse(res.data)
       const message = "Bingo! Your File has been Uploaded Successfully.";
       toast.success(message, {
         position: "top-right",
@@ -44,8 +46,16 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
         draggable: true,
       });
       setLoading(false);
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      let error = err.message || 'Something went wrong!';
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+      });
       setLoading(false);
     }
   };
@@ -57,8 +67,6 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
     setFile("");
   }
 
- 
-
   function handleUpload(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -68,8 +76,6 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
     };
     reader.readAsDataURL(file);
   }
-
-
 
   return (
     <Modal
@@ -100,26 +106,26 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
                 onChange={handleUpload}
                 accept=".png,.jpeg, .jpg"
               />
-              {S3URL && <span class="text-success">File Uploaded Successfully!</span> }
+              {S3URL && <span className="text-success">File Uploaded Successfully! </span>}
             </div>
             {
-              S3URL && (<> 
-              <br />
-            <div className="form-group">
-            <label htmlFor="embededLink"> Sharable Link &nbsp;
+              S3URL && (<>
+                <br />
+                <div className="form-group">
+                  <label htmlFor="embededLink"> Sharable Link &nbsp;
               <CopyToClipboard text={embededLinkText} onCopy={onCopyText}>
-                <i className="las la-copy cursor-pointer"></i>
-              </CopyToClipboard>
-            </label>
-              <textarea class="form-control" id="embededLink" rows="4" readOnly value={embededLinkText}  ></textarea>
-              </div>
-              
+                      <i className="las la-copy cursor-pointer"></i>
+                    </CopyToClipboard>
+                  </label>
+                  <textarea className="form-control" id="embededLink" rows="4" readOnly value={embededLinkText}  ></textarea>
+                </div>
+
               </>)
             }
-            
+
           </div>
           <div className="modal-footer" style={{ padding: "2rem" }}>
-          <button
+            <button
               type="button"
               onClick={(e) => resetChanges(e)}
               className="btn btn-light"
@@ -127,14 +133,15 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
             >
               Reset
             </button>
-            
+
             <button
               type="button"
               onClick={(e) => handleSubmit(e)}
               className="btn btn-dark"
               disabled={loading}
             >
-              Upload
+              Upload{loading ? "  " : ""}
+              <span className={loading ? "spinner-border spinner-border-sm" : ""} role="status" aria-hidden="true"></span>
             </button>
           </div>
         </div>

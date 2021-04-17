@@ -40,6 +40,7 @@ const ConfigCover = () => {
         <Row className="my-3">
             <Col sm={12} lg={4} xl={4} md={4} xs={12}>
                 <h5> Cover Image Details <i className="las la-random cursor-pointer" style={{ fontSize: "18px" }} onClick={() => randomChoice()}></i> <i className="las la-redo-alt cursor-pointer" style={{ fontSize: "18px" }} onClick={() => handleReset()}></i></h5>
+                <br />
                 <div className="form-group">
                     <label>Blog Title</label>
                     <input
@@ -51,22 +52,31 @@ const ConfigCover = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Background Color &nbsp; </label>
+                    <div className="row">
+                        <div className="col-6">
+                        <label>Background Color &nbsp; </label>
                     <input
                         type="color"
                         className="form-control"
                         value={bgColor}
                         onChange={(e) => setBgColor(e.target.value)}
                     />
-                </div>
-                <div className="form-group">
-                    <label>Text Color &nbsp; </label>
+                        </div>
+                        <div className="col-6">
+                        <label>Text Color &nbsp; </label>
                     <input
                         type="color"
                         className="form-control"
                         value={textColor}
                         onChange={(e) => setTextColor(e.target.value)}
                     />
+                        </div>
+                    </div>
+                   
+                    
+                </div>
+                <div className="form-group">
+                    
                 </div>
                 <div className="form-group">
                     <label>Font Size </label>

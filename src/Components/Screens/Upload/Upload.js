@@ -1,13 +1,26 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
-import { recentUploads } from "../../../config/dummydata";
 import UploadImageModal from "../../Modals/UploadImage";
+import { getRecentUploads } from '../../../CRUD/uploadImage.crud'
 
 const Upload = () => {
  
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
+  const [apiResponse, setApiResponse] = useState();
+
+
+  useEffect(() => {
+		recentUploadsResponse();
+	}, []); 
+
+
+  const recentUploadsResponse = async () => {
+		const random = await getRecentUploads();
+    setApiResponse(random.data)
+	};
+  
   return (
     <div>
       <Row className="mb-3">
@@ -26,15 +39,15 @@ const Upload = () => {
         </Col>
       </Row>
       <Row>
-        {recentUploads.map((item, idx) => (
+        {apiResponse && apiResponse.map((item, idx) => (
           <Col
             sm={4}
-            lg={2}
-            xl={2}
-            md={3}
+            lg={3}
+            xl={3}
+            md={4}
             xs={6}
             key={idx}
-            className="d-flex justify-content-center mb-2"
+            className="d-flex justify-content-center p-2"
           >
             <Image
               className="image cursor-pointer w-100"
@@ -45,15 +58,7 @@ const Upload = () => {
           </Col>
         ))}
       </Row>
-      <Row className="my-4">
-        <Col className="text-center cursor-pointer">
-          <h5>
-            {" "}
-            Load More <i className="las la-chevron-circle-down" />{" "}
-          </h5>
-        </Col>
-      </Row>
-      <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} /> 
+      <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} setApiResponse={setApiResponse} /> 
     </div>
   );
 };
