@@ -1,10 +1,9 @@
 import React from 'react'
+import ConfigCover from './ConfigCover'
 
 const GenerateImage = () => {
     return (
-        <div>
-            I m Generate Image Page
-        </div>
+       <ConfigCover />
     )
 }
 

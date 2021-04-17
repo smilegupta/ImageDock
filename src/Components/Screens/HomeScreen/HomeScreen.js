@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, Fragment} from "react";
 import { collectionList } from "../../../config/dummydata";
 import { Row, Col, Button, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,11 +8,12 @@ import CreateCollection  from "../../Modals/CreateCollection"
 const HomeScreen = () => {
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
+
   return (
-    <>
+    <Fragment>
       <Row className="my-4">
         {collectionList.length > 0 ? (
-          <>
+          <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
               <h4>
                 My Memories <i className="las la-plus cursor-pointer" onClick={() => setModalStatus(true)}  />
@@ -34,7 +35,7 @@ const HomeScreen = () => {
                 </Link>
               </Col>
             ))}{" "}
-          </>
+          </Fragment>
         ) : (
           <Col className="text-center my-4">
             {" "}
@@ -52,7 +53,7 @@ const HomeScreen = () => {
         )}
       </Row>
       <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} />
-    </>
+    </Fragment>
   );
 };
 
