@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import { toast } from "react-toastify";
+import { createCollection, listCollection } from "../../CRUD/collections.crud"
+toast.configure();
 Modal.setAppElement("*");
 
-const CreateCollection = ({ modalStatus, setModalStatus }) => {
+const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse }) => {
   // State Variables
   const [collectionName, setCollectionName] = useState('');
   const [collectionDesc, setCollectionDesc] = useState('');
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Handle Submit Function
   const validateFields = () => {
@@ -17,10 +21,37 @@ const CreateCollection = ({ modalStatus, setModalStatus }) => {
     }
     return true;
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateFields()) return;
-    console.log("API Calling");
+    try {
+      await createCollection(collectionName, collectionDesc);
+      const updatedList = await listCollection()
+      setApiResponse(updatedList.data)
+      const message = "Bingo! New Collection Have Created Successfully.";
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 0,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      setCollectionDesc('')
+      setCollectionName('')
+      setLoading(false);
+    } catch (err) {
+      let error = err.message || 'Something went wrong!';
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+      });
+      setLoading(false);
+    }
   };
 
   return (
@@ -80,8 +111,10 @@ const CreateCollection = ({ modalStatus, setModalStatus }) => {
               type="button"
               onClick={(e) => handleSubmit(e)}
               className="btn btn-primary"
+              disabled={loading}
             >
-              Create Collection
+              Create Collection {loading ? "  " : ""}
+              <span className={loading ? "spinner-border spinner-border-sm" : ""} role="status" aria-hidden="true"></span>
             </button>
           </div>
         </div>

@@ -6,7 +6,7 @@ const ImageMaker = ({ children }) => {
 
     return (
         <Fragment>
-            <h5> Preview <i className="lar la-save cursor-pointer" style={{ fontSize: "18px" }} onClick={() => exportComponentAsPNG(componentRef)} /> </h5>
+            <h5> Preview <i className="las la-download cursor-pointer" style={{ fontSize: "18px" }} onClick={() => exportComponentAsPNG(componentRef)} /> </h5>
             <div ref={componentRef}>{children}</div>
         </Fragment>
     )

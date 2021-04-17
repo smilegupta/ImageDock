@@ -5,9 +5,13 @@ import { collectionList } from "../../../config/dummydata";
 import EditSettings from "../../Modals/EditCollection";
 import addImage from "../../../Images/addImage.svg";
 
+
 const Collection = ({ match }) => {
   // State Variables
   const [settingsOpen, setSettingsOpen] = useState(false);
+  // useEffect(() => {
+	// 	recentUploadsResponse();
+	// }, []); 
 
   // Dummy Function
   const collection = collectionList.find(
@@ -27,10 +31,10 @@ const Collection = ({ match }) => {
           <h4>
             {" "}
             {collection[0].name}{" "}
-            <i
+            {/* <i
               className="las la-cog cursor-pointer"
               onClick={() => setSettingsOpen(true)}
-            />{" "}
+            />{" "} */}
           </h4>
           <p className="text-muted">{collection[0].description}</p>
         </Col>
@@ -50,7 +54,7 @@ const Collection = ({ match }) => {
               src={item.imageUrl}
               alt={item.name}
               height={200}
-              style={{ border: "5px solid #000000" }}
+              style={{ border: "2px solid #000000" }}
             />
           </Col>
         ))}

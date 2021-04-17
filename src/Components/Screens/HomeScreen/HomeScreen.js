@@ -1,25 +1,37 @@
-import {useState, Fragment} from "react";
-import { collectionList } from "../../../config/dummydata";
+import {useState, Fragment, useEffect} from "react";
 import { Row, Col, Button, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NoImage from '../../../Images/infographic.svg'
 import CreateCollection  from "../../Modals/CreateCollection"
+import { listCollection } from '../../../CRUD/collections.crud'
 
 const HomeScreen = () => {
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
+  const [apiResponse, setApiResponse] = useState();
+
+  useEffect(() => {
+		recentUploadsResponse();
+	}, []); 
+
+  const recentUploadsResponse = async () => {
+		const res = await listCollection();
+    console.log(res)
+    setApiResponse(res.data)
+	};
 
   return (
     <Fragment>
       <Row className="my-4">
-        {collectionList.length > 0 ? (
+        {apiResponse && apiResponse.length > 0 ? (
           <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
               <h4>
                 My Memories <i className="las la-plus cursor-pointer" onClick={() => setModalStatus(true)}  />
               </h4>
+              <br />
             </Col>
-            {collectionList.map((item, idx) => (
+            {apiResponse.map((item, idx) => (
               <Col sm={12} lg={4} xl={3} md={6} key={idx}>
                 <Link to={`/collection/${item.collectionId}`}>
                   <div
@@ -27,9 +39,9 @@ const HomeScreen = () => {
                     style={{ maxWidth: "20rem" }}
                   >
                     <div className="card-body text-center">
-                      <h4 className="card-title"> {item.name} </h4>
+                      <h4 className="card-title"> {item.collectionName} </h4>
                       <hr />
-                      <p className="card-text">{item.description}</p>
+                      <p className="card-text">{item.collectionDescription}</p>
                     </div>
                   </div>
                 </Link>
@@ -52,7 +64,7 @@ const HomeScreen = () => {
           </Col>
         )}
       </Row>
-      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} />
+      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} />
     </Fragment>
   );
 };
