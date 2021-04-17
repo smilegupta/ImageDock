@@ -98,6 +98,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus }) => {
                 id="uploadedFile"
                 aria-describedby="fileHelp"
                 onChange={handleUpload}
+                accept=".png,.jpeg, .jpg"
               />
               {S3URL && <span class="text-success">File Uploaded Successfully!</span> }
             </div>
