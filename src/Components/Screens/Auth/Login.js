@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
 import FormContainer from "./FormContainer";
 import LoginImage from "../../../Images/signIn.svg";
@@ -11,6 +11,7 @@ import PasswordMask from 'react-password-mask';
 toast.configure();
 
 const Login = () => {
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,6 +33,7 @@ const Login = () => {
         draggable: true,
       });
       setLoading(false);
+      history.push(`/home`);
     } catch (err) {
       let error = err.message
       if (err.message === 'User is not confirmed.') {
