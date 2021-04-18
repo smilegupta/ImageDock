@@ -53,8 +53,8 @@ function App() {
         <main className="py-3">
           <Container>
           <Route path="/" component={Welcome} exact />
-          <ProtectedRoute path="/home" component={HomeScreen} isAuth={isAuthenticated} /> 
-          <ProtectedRoute path="/collection/:id" component={Collection} isAuth={isAuthenticated}  />
+          <ProtectedRoute path="/home" component={HomeScreen} auth={authProps} /> 
+          <ProtectedRoute path="/collection/:id" component={Collection} auth={authProps}  />
             {/* <Route path="/collection/:id" render={(props) => <Collection {...props} auth={authProps} />} /> */}
             <Route path="/login" render={(props) => <Login {...props} auth={authProps} />} />
             <Route path="/register" render={(props) => <Register {...props} auth={authProps} />} />

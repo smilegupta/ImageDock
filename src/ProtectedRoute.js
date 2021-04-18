@@ -1,12 +1,10 @@
 import {Route, Redirect} from 'react-router-dom'
 
-const ProtectedRoute = ({isAuth, component: Component, ...rest}) => {
-    console.log()
+const ProtectedRoute = ({auth, component: Component, ...rest}) => {
     return (
         <Route {...rest} render={(props) => {
-            console.log(props)
-            if(isAuth){
-                return <Component {...props} />
+            if(auth.isAuthenticated){
+                return <Component {...props} auth={auth} />
             } else{
                return <Redirect to={{pathname: '/login', state: {from:props.location} }}/>
             }

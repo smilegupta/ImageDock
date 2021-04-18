@@ -7,8 +7,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 toast.configure();
 Modal.setAppElement("*");
 
-const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, defaultData }) => {
-    console.log(defaultData)
+const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, defaultData, userId }) => {
     // State Variables
     const [file, setFile] = useState("");
     const [loading, setLoading] = useState(false);
@@ -33,10 +32,10 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, default
         setLoading(true)
         try {
             const result = await uploadImage(file);
-            await addImageToCollection(defaultData.collectionId, defaultData.collectionName, defaultData.collectionDescription, result.data);
+            await addImageToCollection(defaultData.collectionId, defaultData.collectionName, defaultData.collectionDescription, result.data, userId);
             setS3URL(result.data)
             setEmbededLinkText(result.data)
-            const res = await getCollection(defaultData.collectionId)
+            const res = await getCollection(defaultData.collectionId, userId)
             setApiResponse(res.data)
             const message = "Bingo! Your Memory has been Uploaded Successfully.";
             toast.success(message, {
@@ -87,7 +86,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, default
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header" style={{ padding: "2rem" }}>
-                        <h5 className="modal-title">Upload Image</h5>
+                        <h5 className="modal-title">Add Image</h5>
                         <button
                             type="button"
                             className="close"
@@ -98,7 +97,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, default
                     </div>
                     <div className="modal-body" style={{ padding: "2rem" }}>
                         <div className="form-group">
-                            <label htmlFor="uploadedFile">Choose a File to Upload</label>
+                            <label htmlFor="uploadedFile">Choose a Image to Upload</label>
                             <input
                                 type="file"
                                 className="form-control-file"
@@ -114,7 +113,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse, default
                                 <br />
                                 <div className="form-group">
                                     <label htmlFor="embededLink"> Sharable Link &nbsp;
-              <CopyToClipboard text={embededLinkText} onCopy={onCopyText}>
+                                        <CopyToClipboard text={embededLinkText} onCopy={onCopyText}>
                                             <i className="las la-copy cursor-pointer"></i>
                                         </CopyToClipboard>
                                     </label>

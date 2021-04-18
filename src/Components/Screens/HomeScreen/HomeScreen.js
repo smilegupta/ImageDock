@@ -6,18 +6,20 @@ import CreateCollection  from "../../Modals/CreateCollection"
 import { listCollection } from '../../../CRUD/collections.crud'
 
 
-const HomeScreen = (props) => {
-  console.log(props)
+const HomeScreen = ({ auth }) => {
+  console.log(auth.user.attributes.sub)
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
   const [apiResponse, setApiResponse] = useState();
+  const userId = auth.user.attributes.sub
 
   useEffect(() => {
 		recentUploadsResponse();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); 
 
   const recentUploadsResponse = async () => {
-		const res = await listCollection();
+		const res = await listCollection(auth.user.attributes.sub);
     setApiResponse(res.data)
 	};
 
@@ -72,7 +74,7 @@ const HomeScreen = (props) => {
           </Col>
         )}
       </Row>
-      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} />
+      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} userId={userId}/>
     </Fragment>
   );
 };

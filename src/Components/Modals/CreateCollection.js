@@ -5,7 +5,7 @@ import { createCollection, listCollection } from "../../CRUD/collections.crud"
 toast.configure();
 Modal.setAppElement("*");
 
-const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse }) => {
+const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse, userId }) => {
   // State Variables
   const [collectionName, setCollectionName] = useState('');
   const [collectionDesc, setCollectionDesc] = useState('');
@@ -25,8 +25,8 @@ const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse }) => {
     e.preventDefault();
     if (!validateFields()) return;
     try {
-      await createCollection(collectionName, collectionDesc);
-      const updatedList = await listCollection()
+      await createCollection(collectionName, collectionDesc, userId);
+      const updatedList = await listCollection(userId)
       setApiResponse(updatedList.data)
       const message = "Bingo! New Collection Have Created Successfully.";
       toast.success(message, {
@@ -37,6 +37,7 @@ const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse }) => {
         pauseOnHover: true,
         draggable: true,
       });
+      setModalStatus(false)
       setCollectionDesc('')
       setCollectionName('')
       setLoading(false);

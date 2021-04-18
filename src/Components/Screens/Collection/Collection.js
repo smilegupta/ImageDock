@@ -8,8 +8,8 @@ import addImage from "../../../Images/addImage.svg";
 import UploadImageModal from '../../Modals/UploadImageCollection'
 
 
-const Collection = (props) => {
-  console.log(props)
+const Collection = ({match, auth}) => {
+  const userId = auth.user.attributes.sub
   // State Variables
   const [modalStatus, setModalStatus] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -23,8 +23,7 @@ const Collection = (props) => {
 
   const getCollectionResponse = async () => {
 
-    const res = await getCollection(props.match.params.id);
-    console.log(res.data)
+    const res = await getCollection(match.params.id, userId);
     setCollection(res.data)
     setLoading(false)
   };
@@ -70,6 +69,7 @@ const Collection = (props) => {
                       src={item.imageUrl}
                       alt={item.name}
                       height={200}
+                      width={200}
                       style={{ border: "2px solid #000000" }}
                     />
                   </Col>}
@@ -98,7 +98,7 @@ const Collection = (props) => {
               name={collection[0].collectionName}
               desc={collection[0].collectionDescription}
             />
-            <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} setApiResponse={setCollection} defaultData={collection[0]} /> 
+            <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} setApiResponse={setCollection} defaultData={collection[0]} userId={userId}/> 
           </>
         )
       }
