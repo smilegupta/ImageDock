@@ -153,7 +153,6 @@ const Login = () => {
     				>
     					<i
     						className="la la-info-circle"
-    						style={{ paddingLeft: "0" }}
     					></i>
     				</Tippy>
           <PasswordMask
