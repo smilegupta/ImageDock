@@ -8,7 +8,8 @@ import addImage from "../../../Images/addImage.svg";
 import UploadImageModal from '../../Modals/UploadImageCollection'
 
 
-const Collection = ({ match }) => {
+const Collection = (props) => {
+  console.log(props)
   // State Variables
   const [modalStatus, setModalStatus] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -22,7 +23,7 @@ const Collection = ({ match }) => {
 
   const getCollectionResponse = async () => {
 
-    const res = await getCollection(match.params.id);
+    const res = await getCollection(props.match.params.id);
     console.log(res.data)
     setCollection(res.data)
     setLoading(false)

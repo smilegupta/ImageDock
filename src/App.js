@@ -13,6 +13,7 @@ import GenerateImage from "./Components/Screens/GenerateImage/GenerateImage"
 import ForgetPassword from "./Components/Screens/Auth/ForgotPassword"
 import NewPassWord from "./Components/Screens/Auth/NewPassWord"
 import { Auth } from "aws-amplify";
+import ProtectedRoute from './ProtectedRoute'
 
 function App() {
 
@@ -52,8 +53,9 @@ function App() {
         <main className="py-3">
           <Container>
           <Route path="/" component={Welcome} exact />
-            <Route path="/home" render={(props) => <HomeScreen {...props} auth={authProps} />} />
-            <Route path="/collection/:id" render={(props) => <Collection {...props} auth={authProps} />} />
+          <ProtectedRoute path="/home" component={HomeScreen} isAuth={isAuthenticated} /> 
+          <ProtectedRoute path="/collection/:id" component={Collection} isAuth={isAuthenticated}  />
+            {/* <Route path="/collection/:id" render={(props) => <Collection {...props} auth={authProps} />} /> */}
             <Route path="/login" render={(props) => <Login {...props} auth={authProps} />} />
             <Route path="/register" render={(props) => <Register {...props} auth={authProps} />} />
             <Route path="/upload" component={Upload} />

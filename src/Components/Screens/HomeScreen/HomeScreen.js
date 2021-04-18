@@ -1,11 +1,13 @@
 import {useState, Fragment, useEffect} from "react";
 import { Row, Col, Button, Image} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import NoImage from '../../../Images/infographic.svg'
 import CreateCollection  from "../../Modals/CreateCollection"
 import { listCollection } from '../../../CRUD/collections.crud'
 
-const HomeScreen = () => {
+
+const HomeScreen = (props) => {
+  console.log(props)
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
   const [apiResponse, setApiResponse] = useState();
@@ -75,4 +77,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default withRouter(HomeScreen);
