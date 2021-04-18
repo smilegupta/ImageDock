@@ -14,11 +14,10 @@ import ForgetPassword from "./Components/Screens/Auth/ForgotPassword"
 import NewPassWord from "./Components/Screens/Auth/NewPassWord"
 import { Auth } from "aws-amplify";
 import ProtectedRoute from './ProtectedRoute'
+import ErrorPage from './Components/Screens/ErrorPage'
 
 function App() {
-
   
-
   const [isAuthenticated, setAuthenticated] = useState(false)
   const [isAuthenticating, setAuthenticating] = useState(true)
   const [user, setUser] = useState(null)
@@ -29,7 +28,6 @@ function App() {
      setUser,
      setAuthenticated
    }
-   
    useEffect( () => {
     async function fetchMyAPI() {
       try{
@@ -63,6 +61,7 @@ function App() {
             <Route path="/forgot-password"  render={(props) => <ForgetPassword {...props} auth={authProps} />}  exact />
             <Route path="/forgot-password/:email" render={(props) => <ForgetPassword {...props} auth={authProps} />} />
             <Route path="/new-password/:email" render={(props) => <NewPassWord {...props} auth={authProps} />} />
+            <Route path="*" component={ErrorPage} />
           </Container>
         </main>
         {/* <Footer /> */}
