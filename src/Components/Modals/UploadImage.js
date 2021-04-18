@@ -18,7 +18,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   const [embededLinkText, setEmbededLinkText] = useState("");
 
   const onCopyText = () => {
-    const message = "Text Copied Successfully";
+    const message = "Link Copied Successfully";
     toast.success(message, {
       position: "top-right",
       autoClose: 0,
