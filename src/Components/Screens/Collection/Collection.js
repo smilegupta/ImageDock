@@ -19,7 +19,7 @@ const Collection = ({ match, auth }) => {
   const [modalStatus, setModalStatus] = useState(false);
   const [collection, setCollection] = useState();
   const [loading, setLoading] = useState(true);
-  const [iframeModal, setIframeModal] = useState(true);
+  const [iframeModal, setIframeModal] = useState(false);
 
   useEffect(() => {
     getCollectionResponse();
