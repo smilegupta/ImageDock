@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Auth } from "aws-amplify";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
@@ -7,9 +8,10 @@ toast.configure();
 
 const Header = ({ auth }) => {
   let history = useHistory();
+  // Logout Function 
   const handleLogout = async (e) => {
     e.preventDefault();
-    try{
+    try {
       Auth.signOut()
       auth.setAuthenticated(false)
       auth.setUser(null)
@@ -23,10 +25,11 @@ const Header = ({ auth }) => {
         draggable: true,
       });
       history.push('/');
-    }catch(err){
-      console.log(err.message)
+    } catch (err) {
+      console.error(err.message)
     }
   }
+
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
@@ -34,7 +37,6 @@ const Header = ({ auth }) => {
           <LinkContainer to="/">
             <Navbar.Brand>Image Dock</Navbar.Brand>
           </LinkContainer>
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
@@ -46,25 +48,24 @@ const Header = ({ auth }) => {
               </LinkContainer>
               {
                 auth.isAuthenticated === true ? (
-                <>  
-                  <LinkContainer to="/home">
-                    <Nav.Link>  Home </Nav.Link>
-                  </LinkContainer>  
-                  <LinkContainer to="/">
-                      <Nav.Link className="pr-0" onClick={(e) => handleLogout(e)}> Logout </Nav.Link>
-                  </LinkContainer> 
-                </>) : (
-                  <>  
-                    <LinkContainer to="/register">
-                      <Nav.Link className="pr-0"> Sign Up </Nav.Link>
+                  <Fragment>
+                    <LinkContainer to="/home">
+                      <Nav.Link>  Home </Nav.Link>
                     </LinkContainer>
-                    
-                    <LinkContainer to="/login">
-                      <Nav.Link className="pr-0"> Sign In</Nav.Link>
-                    </LinkContainer> 
-              
-                  </>)
+                    <LinkContainer to="/">
+                      <Nav.Link className="pr-0" onClick={(e) => handleLogout(e)}> Logout </Nav.Link>
+                    </LinkContainer>
+                  </Fragment>) : (
+                    <Fragment>
+                      <LinkContainer to="/register">
+                        <Nav.Link className="pr-0"> Sign Up </Nav.Link>
+                      </LinkContainer>
 
+                      <LinkContainer to="/login">
+                        <Nav.Link className="pr-0"> Sign In</Nav.Link>
+                      </LinkContainer>
+
+                    </Fragment>)
               }
 
             </Nav>

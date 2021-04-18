@@ -72,8 +72,6 @@ const ConfigCover = () => {
                     />
                         </div>
                     </div>
-                   
-                    
                 </div>
                 <div className="form-group">
                     

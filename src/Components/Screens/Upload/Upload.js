@@ -1,26 +1,25 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image } from "react-bootstrap";
 import UploadImageModal from "../../Modals/UploadImage";
 import { getRecentUploads } from '../../../CRUD/uploadImage.crud'
 
 const Upload = () => {
- 
+
   // State Variables
-  const [modalStatus, setModalStatus ] = useState(false);
+  const [modalStatus, setModalStatus] = useState(false);
   const [apiResponse, setApiResponse] = useState();
 
-
   useEffect(() => {
-		recentUploadsResponse();
-	}, []); 
+    recentUploadsResponse();
+  }, []);
 
-
+  // API to fetch Recent Uploaded Images
   const recentUploadsResponse = async () => {
-		const random = await getRecentUploads();
+    const random = await getRecentUploads();
     setApiResponse(random.data)
-	};
-  
+  };
+
   return (
     <div>
       <Row className="mb-3">
@@ -40,15 +39,8 @@ const Upload = () => {
       </Row>
       <Row>
         {apiResponse && apiResponse.map((item, idx) => (
-          <Col
-            sm={4}
-            lg={3}
-            xl={3}
-            md={4}
-            xs={6}
-            key={idx}
-            className="d-flex justify-content-center p-2"
-          >
+          <Col sm={4} lg={3} xl={3} md={4} xs={6} key={idx}
+            className="d-flex justify-content-center p-2" >
             <Image
               className="image cursor-pointer w-100"
               src={item}
@@ -58,7 +50,7 @@ const Upload = () => {
           </Col>
         ))}
       </Row>
-      <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} setApiResponse={setApiResponse} /> 
+      <UploadImageModal modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} />
     </div>
   );
 };

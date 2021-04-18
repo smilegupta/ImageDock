@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CoverImage = ({pattern, textSize, textColor,  title, bgColor}) => {
     return (
         <div className={`cover ${pattern} `} style={{ backgroundColor: bgColor, color: textColor, fontSize: `${textSize}px` }}>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <Row style={{ minHeight: "70vh" }}>
+    <Row>
       <Col className="text-center mt-3">
         {" "}
         <Image src={HomeScreenImage} alt="empty" className="w-50" />

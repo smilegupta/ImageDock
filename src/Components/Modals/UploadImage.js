@@ -112,9 +112,9 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
                 <br />
                 <div className="form-group">
                   <label htmlFor="embededLink"> Sharable Link &nbsp;
-              <CopyToClipboard text={embededLinkText} onCopy={onCopyText}>
-                      <i className="las la-copy cursor-pointer"></i>
-                    </CopyToClipboard>
+                      <CopyToClipboard text={embededLinkText} onCopy={onCopyText}>
+                        <i className="las la-copy cursor-pointer"></i>
+                      </CopyToClipboard>
                   </label>
                   <textarea className="form-control" id="embededLink" rows="4" readOnly value={embededLinkText}  ></textarea>
                 </div>

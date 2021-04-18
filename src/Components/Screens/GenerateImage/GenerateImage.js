@@ -1,4 +1,3 @@
-import React from 'react'
 import ConfigCover from './ConfigCover'
 import {Row, Col} from 'react-bootstrap'
 import { Link } from "react-router-dom";

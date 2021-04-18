@@ -9,7 +9,6 @@ const GET_COLLECTION = "/collection/"
 const ADD_IMAGE_TO_COLLECTION = "/collection/image"
 
 export function listCollection(userId) {
-    console.log(userId)
 	const QUERY = `?userId=${userId}`
 	return rawAxios.get(API_URL + LIST_COLLECTION + QUERY);
 }

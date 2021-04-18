@@ -1,31 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Image } from "react-bootstrap";
-import { getCollection } from '../../../CRUD/collections.crud'
+import { Row, Col, Image, Button } from "react-bootstrap";
+import { getCollection } from "../../../CRUD/collections.crud";
 import EditSettings from "../../Modals/EditCollection";
 import addImage from "../../../Images/addImage.svg";
-import UploadImageModal from '../../Modals/UploadImageCollection'
+import UploadImageModal from "../../Modals/UploadImageCollection";
+import NoImage from '../../../Images/infographic.svg'
 
-
-const Collection = ({match, auth}) => {
-  const userId = auth.user.attributes.sub
+const Collection = ({ match, auth }) => {
+  const userId = auth.user.attributes.sub;
   // State Variables
   const [modalStatus, setModalStatus] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [collection, setCollection] = useState()
-  const [loading, setLoading] = useState(true)
-
+  const [collection, setCollection] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getCollectionResponse();
   }, []);
 
   const getCollectionResponse = async () => {
-
     const res = await getCollection(match.params.id, userId);
-    setCollection(res.data)
-    setLoading(false)
+    setCollection(res.data);
+    setLoading(false);
   };
 
   return (
@@ -37,71 +35,97 @@ const Collection = ({match, auth}) => {
           </Link>
         </Col>
       </Row>
-      {
-        loading === true ? (<> I am loading </>) : (
-          <>
-            <Row className="mb-2">
-              <Col className="text-lg-left text-center">
-                <h4>
-                  {" "}
-                  {collection[0].collectionName}{" "}
-                  {/* <i
+      {loading === true ? (
+        <> I am loading </>
+      ) : (
+        <>
+          {collection && collection.length > 0 ? (
+            <>
+              <Row className="mb-2">
+                <Col className="text-lg-left text-center">
+                  <h4>
+                    {" "}
+                    {collection[0].collectionName}{" "}
+                    {/* <i
                     className="las la-cog cursor-pointer"
                     onClick={() => setSettingsOpen(true)}
                   />{" "} */}
-                </h4>
-                <p className="text-muted">{collection[0].collectionDescription}</p>
-              </Col>
-            </Row>
+                  </h4>
+                  <p className="text-muted">
+                    {collection[0].collectionDescription}
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                {collection.map((item, idx) => (
+                  <>
+                    {item.imageUrl && (
+                      <Col
+                        sm={6}
+                        lg={4}
+                        xl={3}
+                        md={6}
+                        key={idx}
+                        className="d-flex justify-content-center mb-2"
+                      >
+                        <Image
+                          className="image cursor-pointer"
+                          src={item.imageUrl}
+                          alt={item.name}
+                          height={200}
+                          width={200}
+                          style={{ border: "2px solid #000000" }}
+                        />
+                      </Col>
+                    )}
+                  </>
+                ))}
+                <Col
+                  sm={6}
+                  lg={4}
+                  xl={3}
+                  md={6}
+                  className="d-flex justify-content-center p-4 mb-2 my-auto"
+                >
+                  <Image
+                    className="image cursor-pointer"
+                    src={addImage}
+                    alt="add"
+                    height={135}
+                    onClick={() => setModalStatus(true)}
+                  />
+                </Col>
+              </Row>
+              <EditSettings
+                settingsOpen={settingsOpen}
+                setSettingsOpen={setSettingsOpen}
+                name={collection[0].collectionName}
+                desc={collection[0].collectionDescription}
+              />
+              <UploadImageModal
+                modalStatus={modalStatus}
+                setModalStatus={setModalStatus}
+                setApiResponse={setCollection}
+                defaultData={collection[0]}
+                userId={userId}
+              />
+            </>
+          ) : (
             <Row>
-              {collection.map((item, idx) => (
-                <>
-                  {item.imageUrl && <Col
-                    sm={6}
-                    lg={4}
-                    xl={3}
-                    md={6}
-                    key={idx}
-                    className="d-flex justify-content-center mb-2"
-                  >
-                    <Image
-                      className="image cursor-pointer"
-                      src={item.imageUrl}
-                      alt={item.name}
-                      height={200}
-                      width={200}
-                      style={{ border: "2px solid #000000" }}
-                    />
-                  </Col>}
-                </>
-
-              ))}
-              <Col
-                sm={6}
-                lg={4}
-                xl={3}
-                md={6}
-                className="d-flex justify-content-center p-4 mb-2 my-auto"
-              >
-                <Image
-                  className="image cursor-pointer"
-                  src={addImage}
-                  alt="add"
-                  height={135}
-                  onClick={() => setModalStatus(true)}
-                />
-              </Col>
+               <Col className="text-center my-4">
+            {" "}
+            <Image src={NoImage} alt="empty" className="w-25" />
+            <h4> There's nothing to show here. </h4> <br />{" "}
+            <Button className="btn btn-dark" onClick={() => setModalStatus(true)} >
+              {" "}
+              &nbsp; Add Memory {" "}
+             
+            </Button>{" "}
+          </Col>
             </Row>
-            <EditSettings
-              settingsOpen={settingsOpen}
-              setSettingsOpen={setSettingsOpen}
-              name={collection[0].collectionName}
-              desc={collection[0].collectionDescription}
-            />
-            <UploadImageModal modalStatus={modalStatus}  setModalStatus={setModalStatus} setApiResponse={setCollection} defaultData={collection[0]} userId={userId}/> 
-          </>
-        )
-      }
+          )}
+        </>
+      )}
     </div>
   );
 };
