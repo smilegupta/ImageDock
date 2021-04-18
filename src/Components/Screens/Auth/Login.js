@@ -11,7 +11,6 @@ import PasswordMask from 'react-password-mask';
 toast.configure();
 
 const Login = ({auth}) => {
-  console.log(auth)
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

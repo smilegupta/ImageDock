@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
-    <Row style={{ minHeight: "70vh" }}>
+    <Row>
       <Col className="text-center mt-3">
         {" "}
         <Image src={HomeScreenImage} alt="empty" className="w-50" />
@@ -17,9 +17,7 @@ const Welcome = () => {
           Auto Generate Cover Images For Blogs
         </h6>
         <Link to="/upload">
-          <Button className="btn btn-dark  mt-2 ml-2 p-3">
-          Upload Image{" "}
-          </Button>
+          <Button className="btn btn-dark  mt-2 ml-2 p-3">Upload Image </Button>
         </Link>
         <Link to="/generate-image">
           <Button className="btn btn-dark mt-2 ml-2 p-3">
