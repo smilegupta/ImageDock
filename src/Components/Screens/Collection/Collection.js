@@ -1,18 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, Button } from "react-bootstrap";
 import { getCollection } from "../../../CRUD/collections.crud";
-import EditSettings from "../../Modals/EditCollection";
 import addImage from "../../../Images/addImage.svg";
 import UploadImageModal from "../../Modals/UploadImageCollection";
-import NoImage from '../../../Images/infographic.svg'
+import NoImage from "../../../Images/infographic.svg";
+import Loader from "../../Common/Loader";
 
 const Collection = ({ match, auth }) => {
+  // Important Values
   const userId = auth.user.attributes.sub;
+  const collectionName = match.params.name;
+  const collectionId = match.params.id;
+
   // State Variables
   const [modalStatus, setModalStatus] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
   const [collection, setCollection] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -20,8 +23,9 @@ const Collection = ({ match, auth }) => {
     getCollectionResponse();
   }, []);
 
+  // API to get all images stored in a particular collection
   const getCollectionResponse = async () => {
-    const res = await getCollection(match.params.id, userId);
+    const res = await getCollection(collectionId, userId);
     setCollection(res.data);
     setLoading(false);
   };
@@ -36,29 +40,19 @@ const Collection = ({ match, auth }) => {
         </Col>
       </Row>
       {loading === true ? (
-        <> I am loading </>
+        <Loader />
       ) : (
-        <>
+        <Fragment>
+          <Row className="mb-2">
+            <Col className="text-lg-left text-center">
+              <h4>{collectionName}</h4>
+            </Col>
+          </Row>
           {collection && collection.length > 0 ? (
-            <>
-              <Row className="mb-2">
-                <Col className="text-lg-left text-center">
-                  <h4>
-                    {" "}
-                    {collection[0].collectionName}{" "}
-                    {/* <i
-                    className="las la-cog cursor-pointer"
-                    onClick={() => setSettingsOpen(true)}
-                  />{" "} */}
-                  </h4>
-                  <p className="text-muted">
-                    {collection[0].collectionDescription}
-                  </p>
-                </Col>
-              </Row>
+            <Fragment>
               <Row>
                 {collection.map((item, idx) => (
-                  <>
+                  <Fragment>
                     {item.imageUrl && (
                       <Col
                         sm={6}
@@ -78,7 +72,7 @@ const Collection = ({ match, auth }) => {
                         />
                       </Col>
                     )}
-                  </>
+                  </Fragment>
                 ))}
                 <Col
                   sm={6}
@@ -96,36 +90,32 @@ const Collection = ({ match, auth }) => {
                   />
                 </Col>
               </Row>
-              <EditSettings
-                settingsOpen={settingsOpen}
-                setSettingsOpen={setSettingsOpen}
-                name={collection[0].collectionName}
-                desc={collection[0].collectionDescription}
-              />
-              <UploadImageModal
-                modalStatus={modalStatus}
-                setModalStatus={setModalStatus}
-                setApiResponse={setCollection}
-                defaultData={collection[0]}
-                userId={userId}
-              />
-            </>
+            </Fragment>
           ) : (
             <Row>
-               <Col className="text-center my-4">
-            {" "}
-            <Image src={NoImage} alt="empty" className="w-25" />
-            <h4> There's nothing to show here. </h4> <br />{" "}
-            <Button className="btn btn-dark" onClick={() => setModalStatus(true)} >
-              {" "}
-              &nbsp; Add Memory {" "}
-             
-            </Button>{" "}
-          </Col>
+              <Col className="text-center my-4">
+                {" "}
+                <Image src={NoImage} alt="empty" className="w-25" />
+                <h4> There's nothing to show here. </h4> <br />{" "}
+                <Button
+                  className="btn btn-dark"
+                  onClick={() => setModalStatus(true)}
+                >
+                  {" "}
+                  &nbsp; Add Memory{" "}
+                </Button>{" "}
+              </Col>
             </Row>
           )}
-        </>
+        </Fragment>
       )}
+      <UploadImageModal
+        modalStatus={modalStatus}
+        setModalStatus={setModalStatus}
+        setApiResponse={setCollection}
+        collectionId={collectionId}
+        userId={userId}
+      />
     </div>
   );
 };

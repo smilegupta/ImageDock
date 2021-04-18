@@ -1,18 +1,23 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import { createCollection, listCollection } from "../../CRUD/collections.crud"
+import { createCollection, listCollection } from "../../CRUD/collections.crud";
 toast.configure();
 Modal.setAppElement("*");
 
-const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse, userId }) => {
+const CreateCollection = ({
+  modalStatus,
+  setModalStatus,
+  setApiResponse,
+  userId,
+}) => {
   // State Variables
-  const [collectionName, setCollectionName] = useState('');
-  const [collectionDesc, setCollectionDesc] = useState('');
+  const [collectionName, setCollectionName] = useState("");
+  const [collectionDesc, setCollectionDesc] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle Submit Function
+  // Validating that Collection Name
   const validateFields = () => {
     setError("");
     if (collectionName === null || collectionName === "") {
@@ -21,13 +26,15 @@ const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse, userId 
     }
     return true;
   };
+
+  // Creating Collection API
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateFields()) return;
     try {
       await createCollection(collectionName, collectionDesc, userId);
-      const updatedList = await listCollection(userId)
-      setApiResponse(updatedList.data)
+      const updatedList = await listCollection(userId);
+      setApiResponse(updatedList.data);
       const message = "Bingo! New Collection Have Created Successfully.";
       toast.success(message, {
         position: "top-right",
@@ -37,19 +44,19 @@ const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse, userId 
         pauseOnHover: true,
         draggable: true,
       });
-      setModalStatus(false)
-      setCollectionDesc('')
-      setCollectionName('')
+      setModalStatus(false);
+      setCollectionDesc("");
+      setCollectionName("");
       setLoading(false);
     } catch (err) {
-      let error = err.message || 'Something went wrong!';
+      let error = err.message || "Something went wrong!";
       toast.error(error, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
-        draggable: true
+        draggable: true,
       });
       setLoading(false);
     }
@@ -115,7 +122,11 @@ const CreateCollection = ({ modalStatus, setModalStatus, setApiResponse, userId 
               disabled={loading}
             >
               Create Collection {loading ? "  " : ""}
-              <span className={loading ? "spinner-border spinner-border-sm" : ""} role="status" aria-hidden="true"></span>
+              <span
+                className={loading ? "spinner-border spinner-border-sm" : ""}
+                role="status"
+                aria-hidden="true"
+              ></span>
             </button>
           </div>
         </div>
