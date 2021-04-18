@@ -70,7 +70,6 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   function handleUpload(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
-    console.log(file)
     reader.onloadend = () => {
       setFile(reader.result)
     };

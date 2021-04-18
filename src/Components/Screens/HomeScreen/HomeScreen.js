@@ -16,13 +16,19 @@ const HomeScreen = () => {
 
   const recentUploadsResponse = async () => {
 		const res = await listCollection();
-    console.log(res)
     setApiResponse(res.data)
 	};
 
   return (
     <Fragment>
-      <Row className="my-4">
+      <Row className="mb-3">
+        <Col className="text-right">
+          <Link to="/home">
+            <i className="las la-arrow-left" /> Go Back
+          </Link>
+        </Col>
+      </Row>
+      <Row>
         {apiResponse && apiResponse.length > 0 ? (
           <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">

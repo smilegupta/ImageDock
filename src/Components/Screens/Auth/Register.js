@@ -18,11 +18,10 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { user } = await Auth.signUp({
+      await Auth.signUp({
           username,
           password,
       });
-      console.log(user);
       let message = "Verification email successfully. Please verify your account by clicking that link before logging in.";
       toast.success(message, {
         position: "top-right",

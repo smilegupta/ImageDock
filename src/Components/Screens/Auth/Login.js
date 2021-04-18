@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
 import PasswordMask from 'react-password-mask';
 toast.configure();
 
-const Login = () => {
+const Login = ({auth}) => {
+  console.log(auth)
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +22,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const user = await Auth.signIn(email, password);
-      console.log("successfully signed in", user);
+      const res = await Auth.signIn(email, password);
       let message = "Signed in successfully! Welcome back!!";
       toast.success(message, {
         position: "top-right",
@@ -33,6 +33,8 @@ const Login = () => {
         draggable: true,
       });
       setLoading(false);
+      auth.setAuthenticated(true)
+      auth.setUser(res)
       history.push(`/home`);
     } catch (err) {
       let error = err.message
