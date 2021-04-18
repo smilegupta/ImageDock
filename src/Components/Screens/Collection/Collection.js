@@ -96,7 +96,7 @@ const Collection = ({ match, auth }) => {
                   onClick={() => setModalStatus(true)}
                 >
                   {" "}
-                  &nbsp; Add Memory{" "}
+                  &nbsp; Add to Album {" "}
                 </Button>{" "}
               </Col>
             </Row>

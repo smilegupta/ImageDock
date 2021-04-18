@@ -38,7 +38,7 @@ const GenerateIframe = ({
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header" style={{ padding: "2rem" }}>
-              <h5 className="modal-title">MEMORY IFrame </h5>
+              <h5 className="modal-title">Albumn I-Frame </h5>
               <button
                 type="button"
                 className="close"

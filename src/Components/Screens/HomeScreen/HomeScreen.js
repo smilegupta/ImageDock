@@ -41,7 +41,7 @@ const HomeScreen = ({ auth }) => {
           <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
               <h4>
-                My Memories{" "}
+                My Album{" "}
                 <i
                   className="las la-plus cursor-pointer"
                   onClick={() => setModalStatus(true)}
@@ -85,7 +85,7 @@ const HomeScreen = ({ auth }) => {
                   onClick={() => setModalStatus(true)}
                 >
                   {" "}
-                  &nbsp; Create Memory{" "}
+                  &nbsp; Create Album{" "}
                 </Button>{" "}
               </Col>
             )}
