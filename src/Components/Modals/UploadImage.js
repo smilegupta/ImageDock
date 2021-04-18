@@ -70,7 +70,6 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   function handleUpload(e) {
     const file = e.target.files[0];
     const reader = new FileReader();
-    console.log(file)
     reader.onloadend = () => {
       setFile(reader.result)
     };
@@ -97,7 +96,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
           </div>
           <div className="modal-body" style={{ padding: "2rem" }}>
             <div className="form-group">
-              <label htmlFor="uploadedFile">Choose a File to Upload</label>
+              <label htmlFor="uploadedFile">Choose a Image to Upload</label>
               <input
                 type="file"
                 className="form-control-file"

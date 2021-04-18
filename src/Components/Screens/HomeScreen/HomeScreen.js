@@ -1,28 +1,38 @@
 import {useState, Fragment, useEffect} from "react";
 import { Row, Col, Button, Image} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import NoImage from '../../../Images/infographic.svg'
 import CreateCollection  from "../../Modals/CreateCollection"
 import { listCollection } from '../../../CRUD/collections.crud'
 
-const HomeScreen = () => {
+
+const HomeScreen = ({ auth }) => {
+  console.log(auth.user.attributes.sub)
   // State Variables
   const [modalStatus, setModalStatus ] = useState(false);
   const [apiResponse, setApiResponse] = useState();
+  const userId = auth.user.attributes.sub
 
   useEffect(() => {
 		recentUploadsResponse();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); 
 
   const recentUploadsResponse = async () => {
-		const res = await listCollection();
-    console.log(res)
+		const res = await listCollection(auth.user.attributes.sub);
     setApiResponse(res.data)
 	};
 
   return (
     <Fragment>
-      <Row className="my-4">
+      <Row className="mb-3">
+        <Col className="text-right">
+          <Link to="/home">
+            <i className="las la-arrow-left" /> Go Back
+          </Link>
+        </Col>
+      </Row>
+      <Row>
         {apiResponse && apiResponse.length > 0 ? (
           <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
@@ -64,9 +74,9 @@ const HomeScreen = () => {
           </Col>
         )}
       </Row>
-      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} />
+      <CreateCollection modalStatus={modalStatus} setModalStatus={setModalStatus} setApiResponse={setApiResponse} userId={userId}/>
     </Fragment>
   );
 };
 
-export default HomeScreen;
+export default withRouter(HomeScreen);

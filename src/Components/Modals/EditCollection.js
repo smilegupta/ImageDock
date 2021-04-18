@@ -20,7 +20,6 @@ const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateFields()) return;
-    console.log("API Calling");
   };
 
   return (

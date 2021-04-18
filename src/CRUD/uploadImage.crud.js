@@ -23,3 +23,4 @@ export function imageStore(imageURL){
 export function getRecentUploads() {
 	return rawAxios.get(API_URL + RECENT_UPLOAD);
 }
+
