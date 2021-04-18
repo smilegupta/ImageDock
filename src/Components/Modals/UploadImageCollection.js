@@ -25,7 +25,7 @@ const UploadImageModal = ({
 
   // Function to Copy the Embeded Link
   const onCopyText = () => {
-    const message = "Text Copied Successfully";
+    const message = "Link Copied Successfully";
     toast.success(message, {
       position: "top-right",
       autoClose: 0,
@@ -47,7 +47,7 @@ const UploadImageModal = ({
       setEmbededLinkText(result.data);
       const res = await getCollection(collectionId, userId);
       setApiResponse(res.data);
-      const message = "Bingo! Your Memory has been Uploaded Successfully.";
+      const message = "Bingo! Your snap has been uploaded to album successfully.";
       toast.success(message, {
         position: "top-right",
         autoClose: 0,

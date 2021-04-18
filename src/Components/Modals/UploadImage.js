@@ -18,7 +18,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   const [embededLinkText, setEmbededLinkText] = useState("");
 
   const onCopyText = () => {
-    const message = "Text Copied Successfully";
+    const message = "Link Copied Successfully";
     toast.success(message, {
       position: "top-right",
       autoClose: 0,
@@ -40,7 +40,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
       setEmbededLinkText(result.data);
       const res = await getRecentUploads();
       setApiResponse(res.data);
-      const message = "Bingo! Your File has been Uploaded Successfully.";
+      const message = "Bingo! Your Image has been Uploaded Successfully.";
       toast.success(message, {
         position: "top-right",
         autoClose: 0,
@@ -122,7 +122,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
               />
               {S3URL && (
                 <span className="text-success">
-                  File Uploaded Successfully!{" "}
+                 Image Uploaded Successfully!{" "}
                 </span>
               )}
             </div>

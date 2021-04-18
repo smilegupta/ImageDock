@@ -35,7 +35,7 @@ const CreateCollection = ({
       await createCollection(collectionName, collectionDesc, userId);
       const updatedList = await listCollection(userId);
       setApiResponse(updatedList.data);
-      const message = "Bingo! New Collection Have Created Successfully.";
+      const message = "Bingo! New Album Have Created Successfully.";
       toast.success(message, {
         position: "top-right",
         autoClose: 0,
@@ -71,7 +71,7 @@ const CreateCollection = ({
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header" style={{ padding: "2rem" }}>
-            <h5 className="modal-title">Create Memory</h5>
+            <h5 className="modal-title">Create Album</h5>
             <button
               type="button"
               className="close"
@@ -83,7 +83,7 @@ const CreateCollection = ({
           <div className="modal-body" style={{ padding: "2rem" }}>
             <form>
               <div className="form-group">
-                <label htmlFor="collectionName">Memory Name*</label>
+                <label htmlFor="collectionName">Album Name*</label>
                 <input
                   required
                   type="text"
@@ -121,7 +121,7 @@ const CreateCollection = ({
               className="btn btn-primary"
               disabled={loading}
             >
-              Create Memory {loading ? "  " : ""}
+              Create Album {loading ? "  " : ""}
               <span
                 className={loading ? "spinner-border spinner-border-sm" : ""}
                 role="status"

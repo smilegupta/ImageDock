@@ -16,6 +16,9 @@ const Welcome = () => {
         <h6 className="w-100 mt-2 text-muted">
           Auto Generate Cover Images For Blogs
         </h6>
+        <h6 className="w-100 mt-2 text-muted">
+          Auto Generate I-Frames for all Album Created
+        </h6>
         <Link to="/upload">
           <Button className="btn btn-dark  mt-2 ml-2 p-3">Upload Image </Button>
         </Link>
