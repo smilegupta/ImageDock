@@ -29,7 +29,7 @@ const HomeScreen = ({ auth }) => {
     <Fragment>
       <Row className="mb-3">
         <Col className="text-right">
-          <Link to="/home">
+          <Link to="/">
             <i className="las la-arrow-left" /> Go Back
           </Link>
         </Col>
@@ -39,18 +39,18 @@ const HomeScreen = ({ auth }) => {
           <Loader />
         ) : (
           <Fragment>
+            <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
+              <h4>
+                My Memories{" "}
+                <i
+                  className="las la-plus cursor-pointer"
+                  onClick={() => setModalStatus(true)}
+                />
+              </h4>
+              <br />
+            </Col>
             {apiResponse && apiResponse.length > 0 ? (
               <Fragment>
-                <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
-                  <h4>
-                    My Memories{" "}
-                    <i
-                      className="las la-plus cursor-pointer"
-                      onClick={() => setModalStatus(true)}
-                    />
-                  </h4>
-                  <br />
-                </Col>
                 {apiResponse.map((item, idx) => (
                   <Col sm={12} lg={4} xl={3} md={6} key={idx}>
                     <Link
@@ -85,7 +85,7 @@ const HomeScreen = ({ auth }) => {
                   onClick={() => setModalStatus(true)}
                 >
                   {" "}
-                  &nbsp; Create Collection{" "}
+                  &nbsp; Create Memory{" "}
                 </Button>{" "}
               </Col>
             )}

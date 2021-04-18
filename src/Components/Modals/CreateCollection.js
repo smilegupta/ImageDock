@@ -71,7 +71,7 @@ const CreateCollection = ({
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header" style={{ padding: "2rem" }}>
-            <h5 className="modal-title">Create Collection</h5>
+            <h5 className="modal-title">Create Memory</h5>
             <button
               type="button"
               className="close"
@@ -83,7 +83,7 @@ const CreateCollection = ({
           <div className="modal-body" style={{ padding: "2rem" }}>
             <form>
               <div className="form-group">
-                <label htmlFor="collectionName">Collection Name*</label>
+                <label htmlFor="collectionName">Memory Name*</label>
                 <input
                   required
                   type="text"
@@ -121,7 +121,7 @@ const CreateCollection = ({
               className="btn btn-primary"
               disabled={loading}
             >
-              Create Collection {loading ? "  " : ""}
+              Create Memory {loading ? "  " : ""}
               <span
                 className={loading ? "spinner-border spinner-border-sm" : ""}
                 role="status"
