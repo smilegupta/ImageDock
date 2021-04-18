@@ -29,7 +29,7 @@ const HomeScreen = ({ auth }) => {
     <Fragment>
       <Row className="mb-3">
         <Col className="text-right">
-          <Link to="/home">
+          <Link to="/">
             <i className="las la-arrow-left" /> Go Back
           </Link>
         </Col>
