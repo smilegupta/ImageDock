@@ -46,6 +46,12 @@ const Collection = ({ match, auth }) => {
           <Row className="mb-2">
             <Col className="text-lg-left text-center">
               <h4>{collectionName}</h4>
+              <Link to={`/showcase/${userId}/${collectionId}/${collectionName}`}>
+              <span>
+                Click Me
+              </span>
+          </Link>
+              
             </Col>
           </Row>
           {collection && collection.length > 0 ? (
