@@ -15,11 +15,11 @@ Image Dock is a highly scalable, low cost and high performant one stop solution 
 # Application Links
 
 Frontend Code -> [https://github.com/smilegupta/ImageDock](https://github.com/smilegupta/ImageDock)
-
+<br>
 Deployed URL -> [https://image-dock.smilegupta.tech/](https://image-dock.smilegupta.tech/)
-
+<br>
 Backend Code -> [https://github.com/smilegupta/image-dock-backend](https://github.com/smilegupta/image-dock-backend)
-
+<br>
 API Docs -> [https://image-dock-api.smilegupta.tech/](https://image-dock-api.smilegupta.tech/)
 
 # Tech Stack
