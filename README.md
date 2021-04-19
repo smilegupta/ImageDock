@@ -2,33 +2,35 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/smilegupta)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/smilegupta) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/smilegupta)
 
-Image Dock is a one stop solution to upload images and get sharable link, Generating Cover Image for Blogs and Creating private albums and getting IFrames to add in your website.
+Image Dock is a one stop solution to upload images and get sharable link, generating cover image for blogs and creating private albums and getting iframes to add in your website.
 
 # Project Overview
 <p align="center">
   <img src="https://image-dock-uploads-be.s3.ap-south-1.amazonaws.com/image.2021-04-19T15%3A57%3A07.299Z" />
 </p>
 
-# Useful Links
-### Frontend Code -> [Here](https://github.com/smilegupta/ImageDock)
-### Deployed URL -> [Here](https://image-dock.smilegupta.tech/)
-### Backend Code -> [Here](https://github.com/smilegupta/image-dock-backend)
-### API DOCS -> [Here](https://image-dock-api.smilegupta.tech/)
+# Application Links
+### Frontend Code -> [https://github.com/smilegupta/ImageDock](https://github.com/smilegupta/ImageDock)
+### Deployed URL -> [https://image-dock.smilegupta.tech/](https://image-dock.smilegupta.tech/)
+### Backend Code -> [https://github.com/smilegupta/image-dock-backend](https://github.com/smilegupta/image-dock-backend)
+### API Docs -> [https://image-dock-api.smilegupta.tech/](https://image-dock-api.smilegupta.tech/)
 
 # Tech Stack
-### Frontned: Reactjs 
+Frontned: Reactjs 
 
-### Additional NPM Libraries: react-toastify, react-router-dom, react-router-bootstrap, react-password-mask, react-modal, react-copy-to-clipboard, react-component-export-image, react-bootstrap, axios, aws-amplify and @tippyjs/react
+Additional NPM Libraries: react-toastify, react-router-dom, react-router-bootstrap, react-password-mask, react-modal, react-copy-to-clipboard, react-component-export-image, react-bootstrap, axios, aws-amplify and @tippyjs/react
 
-### Styling: CSS and BootStrap
+Styling: CSS and BootStrap
 
-### Database: DynamoDB
+Database: DynamoDB
 
-### User and Session Management: Cogito and Amplify
+Authentication and Authorisation: Cogito and Amplify
 
-### Storing Images: S3
+Storing Images: S3
 
-### Deployment: Making a CI/CD Setup using GitHub Actions and Serverless Framework
+Compute: AWS Lambda
+
+Deployment: CI/CD setup using GitHub Actions via Serverless Framework
 
 
 <p align="center">
@@ -39,14 +41,13 @@ Image Dock is a one stop solution to upload images and get sharable link, Genera
 </p>
 
 # Overall Functionlity
-- Uploading an image ( publically ) and getting a sharable link. 
-- A Blog Cover Image Generator.
+- Uploading an image (publically) and getting a sharable link. 
+- A blog cover image generator.
 - Ability to make private albums and generating iframe code for external websites. 
-- Session Management. 
-- User Management ( Login, Register, Sending Confirmation Link, Forget Password and Email Verification before entering the system) 
+- User Management (Login, register, sending confirmation link, forgot password and email verification before entering the system) 
 - Authenticated Routes and 404 error page.
 
-# Coming Soon Features
+# Upcoming Features
 - Enhacing the IFrame Component
 - Having a Cropping Component in Place
 - Deleting Images in Collection
