@@ -16,6 +16,7 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
   const [loading, setLoading] = useState(false);
   const [S3URL, setS3URL] = useState("");
   const [embededLinkText, setEmbededLinkText] = useState("");
+  const [error, setError] = useState("");
 
   const onCopyText = () => {
     const message = "Link Copied Successfully";
@@ -29,9 +30,20 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
     });
   };
 
+  // Validating Image
+  const validateFile = () => {
+    setError("");
+    if (file === null || file === "") {
+      setError("You have not uploaded any image yet.");
+      return false;
+    }
+    return true;
+  };
+
   // API for Saving Image in S3
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateFile()) return;
     setLoading(true);
     try {
       const result = await uploadImage(file);
@@ -70,10 +82,12 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
     setEmbededLinkText("");
     setS3URL("");
     setFile("");
+    setError("");
   };
 
   // Coverting File to Data URL
   const handleUpload = (e) => {
+    e.preventDefault();
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -120,9 +134,10 @@ const UploadImageModal = ({ modalStatus, setModalStatus, setApiResponse }) => {
                 onChange={handleUpload}
                 accept=".png,.jpeg, .jpg"
               />
+              {error && <span className="text-danger">{error}</span>}
               {S3URL && (
                 <span className="text-success">
-                 Image Uploaded Successfully!{" "}
+                  Image Uploaded Successfully!{" "}
                 </span>
               )}
             </div>
