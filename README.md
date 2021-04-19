@@ -52,6 +52,7 @@ Image Dock is a one stop solution to upload images and get sharable link, Genera
 - Deleting Images in Collection
 - Photo Editor
 - Enhacing UI
+- Selecting and Uploading Multiple Images 
 
 ***Glad to see you here! Show some love by [starring](https://github.com/smilegupta/ImageDock/) this repo.***
 
