@@ -22,6 +22,8 @@ const UploadImageModal = ({
   const [loading, setLoading] = useState(false);
   const [S3URL, setS3URL] = useState("");
   const [embededLinkText, setEmbededLinkText] = useState("");
+  const [error, setError] = useState("");
+
 
   // Function to Copy the Embeded Link
   const onCopyText = () => {
@@ -39,6 +41,7 @@ const UploadImageModal = ({
   // Function to Add Image to Collection
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateFile()) return;
     setLoading(true);
     try {
       const result = await uploadImage(file);
@@ -71,12 +74,23 @@ const UploadImageModal = ({
     }
   };
 
+  // Validating Image
+  const validateFile = () => {
+    setError("");
+    if (file === null || file === "") {
+      setError("You have not uploaded any image yet.");
+      return false;
+    }
+    return true;
+  };
+
   // Function to Reset Changes
   const resetChanges = (e) => {
     e.preventDefault();
     setEmbededLinkText("");
     setS3URL("");
     setFile("");
+    setError("");
   };
 
   // Function to Convert file uploader component to Data URL
@@ -106,7 +120,7 @@ const UploadImageModal = ({
     >
       <div className="modal-dialog">
         <div className="modal-content">
-          <div className="modal-header" style={{ padding: "2rem" }}>
+          <div className="modal-header" style={{ padding: "1.5rem" }}>
             <h5 className="modal-title">Add Image</h5>
             <button
               type="button"
@@ -116,7 +130,7 @@ const UploadImageModal = ({
               <span> &times; </span>
             </button>
           </div>
-          <div className="modal-body" style={{ padding: "2rem" }}>
+          <div className="modal-body" style={{ padding: "1.5rem" }}>
             <div className="form-group">
               <label htmlFor="uploadedFile">Choose a Image to Upload</label>
               <input
@@ -127,6 +141,7 @@ const UploadImageModal = ({
                 onChange={handleUpload}
                 accept=".png,.jpeg, .jpg"
               />
+               {error && <span className="text-danger">{error}</span>}
               {S3URL && (
                 <span className="text-success">
                   File Uploaded Successfully!{" "}
@@ -155,7 +170,7 @@ const UploadImageModal = ({
               </>
             )}
           </div>
-          <div className="modal-footer" style={{ padding: "2rem" }}>
+          <div className="modal-footer" style={{ padding: "1.5rem" }}>
             <button
               type="button"
               onClick={(e) => resetChanges(e)}
