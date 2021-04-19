@@ -41,7 +41,7 @@ const HomeScreen = ({ auth }) => {
           <Fragment>
             <Col sm={12} lg={12} xl={12} md={12} className="no-gutters">
               <h4>
-                My Album{" "}
+                My Albums{" "}
                 <i
                   className="las la-plus cursor-pointer"
                   onClick={() => setModalStatus(true)}

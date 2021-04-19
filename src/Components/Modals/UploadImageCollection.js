@@ -120,7 +120,7 @@ const UploadImageModal = ({
     >
       <div className="modal-dialog">
         <div className="modal-content">
-          <div className="modal-header" style={{ padding: "2rem" }}>
+          <div className="modal-header" style={{ padding: "1.5rem" }}>
             <h5 className="modal-title">Add Image</h5>
             <button
               type="button"
@@ -130,7 +130,7 @@ const UploadImageModal = ({
               <span> &times; </span>
             </button>
           </div>
-          <div className="modal-body" style={{ padding: "2rem" }}>
+          <div className="modal-body" style={{ padding: "1.5rem" }}>
             <div className="form-group">
               <label htmlFor="uploadedFile">Choose a Image to Upload</label>
               <input
@@ -170,7 +170,7 @@ const UploadImageModal = ({
               </>
             )}
           </div>
-          <div className="modal-footer" style={{ padding: "2rem" }}>
+          <div className="modal-footer" style={{ padding: "1.5rem" }}>
             <button
               type="button"
               onClick={(e) => resetChanges(e)}
