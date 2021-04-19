@@ -22,6 +22,8 @@ const UploadImageModal = ({
   const [loading, setLoading] = useState(false);
   const [S3URL, setS3URL] = useState("");
   const [embededLinkText, setEmbededLinkText] = useState("");
+  const [error, setError] = useState("");
+
 
   // Function to Copy the Embeded Link
   const onCopyText = () => {
@@ -39,6 +41,7 @@ const UploadImageModal = ({
   // Function to Add Image to Collection
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateFile()) return;
     setLoading(true);
     try {
       const result = await uploadImage(file);
@@ -71,12 +74,23 @@ const UploadImageModal = ({
     }
   };
 
+  // Validating Image
+  const validateFile = () => {
+    setError("");
+    if (file === null || file === "") {
+      setError("You have not uploaded any image yet.");
+      return false;
+    }
+    return true;
+  };
+
   // Function to Reset Changes
   const resetChanges = (e) => {
     e.preventDefault();
     setEmbededLinkText("");
     setS3URL("");
     setFile("");
+    setError("");
   };
 
   // Function to Convert file uploader component to Data URL
@@ -127,6 +141,7 @@ const UploadImageModal = ({
                 onChange={handleUpload}
                 accept=".png,.jpeg, .jpg"
               />
+               {error && <span className="text-danger">{error}</span>}
               {S3URL && (
                 <span className="text-success">
                   File Uploaded Successfully!{" "}

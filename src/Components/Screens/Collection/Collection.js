@@ -8,6 +8,7 @@ import UploadImageModal from "../../Modals/UploadImageCollection";
 import NoImage from "../../../Images/infographic.svg";
 import Loader from "../../Common/Loader";
 import GenerateIframe from "../../Modals/GenerateIframe"
+import ImageModal from "../../Modals/ImageModal";
 
 const Collection = ({ match, auth }) => {
   // Important Values
@@ -20,6 +21,7 @@ const Collection = ({ match, auth }) => {
   const [collection, setCollection] = useState();
   const [loading, setLoading] = useState(true);
   const [iframeModal, setIframeModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState();
 
   useEffect(() => {
     getCollectionResponse();
@@ -63,6 +65,7 @@ const Collection = ({ match, auth }) => {
                         src={item.imageUrl}
                         alt="Images"
                         style={{ border: "2px solid #000000" }}
+                        onClick={() => setSelectedImage(item.imageUrl)}
                       />
                     </Col>
                     )}
@@ -115,6 +118,13 @@ const Collection = ({ match, auth }) => {
         collectionId={collectionId}
         collectionName={collectionName}
         userId={userId} />
+
+        {selectedImage && (
+        <ImageModal
+          selectedImg={selectedImage}
+          setSelectedImg={setSelectedImage}
+        />
+      )}
     </div>
   );
 };

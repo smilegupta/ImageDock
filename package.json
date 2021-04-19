@@ -9,6 +9,7 @@
     "@tippyjs/react": "^4.2.5",
     "aws-amplify": "^3.3.26",
     "axios": "^0.21.1",
+    "framer-motion": "^4.1.5",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-component-export-image": "^1.0.5",
