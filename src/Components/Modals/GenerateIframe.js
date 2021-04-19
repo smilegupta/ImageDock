@@ -12,8 +12,9 @@ const GenerateIframe = ({
   collectionName,
 }) => {
   // Iframe Embedded Code
-  const embededLink = `https://image-dock.smilegupta.tech/showcase/${userId}/${collectionId}/${collectionName}`;
-  const iFrameCode = `<iframe width="560" height="315" src=${embededLink} title=${collectionName}></iframe>`;
+  const finalCollectionName = collectionName.replace(/ /g, "%20");
+  const embededLink = `https://image-dock.smilegupta.tech/showcase/${userId}/${collectionId}/${finalCollectionName}`;
+  const iFrameCode = `<iframe width="560" height="315" src=${embededLink}></iframe>`;
 
   // Function to Copy the Embeded Link
   const onCopyText = () => {
