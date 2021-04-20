@@ -1,12 +1,23 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
 Modal.setAppElement("*");
 
 const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
   // State Variables
-  const [collectionName, setCollectionName] = useState(name);
-  const [collectionDesc, setCollectionDesc] = useState(desc);
+  const [collectionName, setCollectionName] = useState('');
+  const [collectionDesc, setCollectionDesc] = useState('');
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if(settingsOpen){
+      setCollectionName(name)
+      setCollectionDesc(desc)
+    }else{
+      setCollectionName("")
+      setCollectionDesc("")
+    }
+  }, [settingsOpen])
 
   // Handle Submit Function
   const validateFields = () => {
@@ -20,6 +31,7 @@ const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateFields()) return;
+
   };
 
   return (
@@ -28,6 +40,7 @@ const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
       onRequestClose={() => setSettingsOpen(false)}
       className="react-modal"
     >
+      
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header" style={{ padding: "1.5rem" }}>
@@ -50,7 +63,7 @@ const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
                   className="form-control"
                   name="collectionName"
                   id="collectionName"
-                  value={collectionName}
+                  value={name}
                   placeholder="For Eg: Goa Trip"
                   onChange={(e) => {
                     setCollectionName(e.target.value);
