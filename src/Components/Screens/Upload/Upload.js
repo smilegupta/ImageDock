@@ -64,7 +64,6 @@ const Upload = () => {
             </Col>
           ))}
       </Row>
-      {console.log(selectedImage)}
       <UploadImageModal
         modalStatus={modalStatus}
         setModalStatus={setModalStatus}
