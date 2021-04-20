@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 Modal.setAppElement("*");
 
-const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
+const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc, collectionId, userId }) => {
   // State Variables
   const [collectionName, setCollectionName] = useState('');
   const [collectionDesc, setCollectionDesc] = useState('');
@@ -63,7 +63,7 @@ const EditCollection = ({ settingsOpen, setSettingsOpen, name, desc }) => {
                   className="form-control"
                   name="collectionName"
                   id="collectionName"
-                  value={name}
+                  value={collectionName}
                   placeholder="For Eg: Goa Trip"
                   onChange={(e) => {
                     setCollectionName(e.target.value);

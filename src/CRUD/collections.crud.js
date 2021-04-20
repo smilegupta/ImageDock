@@ -45,3 +45,12 @@ export function deleteCollection(collectionId, userId) {
   const QUERY = `?userId=${userId}`;
   return rawAxios.delete(API_URL + DELETE_COLLECTION + collectionId + QUERY);
 }
+
+export function updateCollection(collectionId, userId, collectionName, collectionDescription ){
+  const payload = {
+    collectionName: collectionName,
+    collectionDescription: collectionDescription,
+    userId: userId,
+  };
+  return rawAxios.put(API_URL + DELETE_COLLECTION + collectionId , payload);
+}

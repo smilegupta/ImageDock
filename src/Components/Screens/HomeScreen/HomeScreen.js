@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, Fragment, useEffect } from "react";
 import { Row, Col, Button, Image } from "react-bootstrap";
@@ -122,7 +123,7 @@ const HomeScreen = ({ auth }) => {
                             {item.collectionDescription}
                           </p>
                           <p className="text-right mt-2 mb-0">
-                            <i onClick={(e) => editCollectionDetails(e, item.collectionId, item.collectionName, item.collectionDescription) } className="las la-cog pl-2"></i>
+                            {/* <i onClick={(e) => editCollectionDetails(e, item.collectionId, item.collectionName, item.collectionDescription) } className="las la-cog pl-2"></i> */}
                             <i onClick={(e) => deleteCollections(e, item.collectionId)} className="las la-trash pl-2"></i>
                           </p>
                         </div>
